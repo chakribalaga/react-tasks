@@ -1,0 +1,102 @@
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+
+}
+.pro-main-cont{
+   width: 100%;
+   height: 100vh;
+   background-color: #ffffff;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+}
+.pro-first-cont{
+    background-color: #221FCA;
+    max-width: 100%;
+    width: 100%;
+    height: 174px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.pro-heading{
+    font-size: 35px;
+    color: #ffffff;
+    font-weight: 500;
+    align-self: center;
+    margin-left: 200px;
+}
+.pro-second-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    margin-top: 50px;
+    background-color: transparent;
+    
+}
+.profile-img-cont {
+    margin-left: 225px;
+    width: 100px;
+    height: 100px;
+    background-color: #BFBEFF;
+    border: 1px solid #000000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.profile-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover; 
+}
+.inf-cont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    width: 550px;
+}
+.emp-name-heading{
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    margin: 10px 0px;
+    font-weight: 500;
+}
+.emp-email-head{
+    font-size: 18px;
+    color: #434343;
+    
+    margin: 2px 80px;
+    font-weight: 500;
+}
+.emp-email-head span{
+    color: #000000;
+    font-weight: 400;
+}
+.pro-logout-btn{
+    width: 442px;
+    height: 39px;
+    border: #050389 1px solid;
+    border-radius: 4px;
+    align-self: center;
+    text-align: center;
+    background-color: transparent;
+    margin: 100px 0px;
+    font-size: #050389;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    
+}
+.pro-logout-btn:hover{
+  background-color: red;
+  color: #ffffff;
+}
