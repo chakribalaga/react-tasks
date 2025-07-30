@@ -1,0 +1,6 @@
+{
+  "India": ["Andhra Pradesh", "Karnataka", "Maharashtra", "Tamil Nadu"],
+  "USA": ["California", "Florida", "New York", "Texas"],
+  "Australia": ["New South Wales", "Queensland", "Victoria"],
+  "UK": ["England", "Scotland", "Wales"]
+}
