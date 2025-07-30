@@ -42,7 +42,7 @@ function Signin() {
             <button className="login-button">Login</button>
               <p className="signin-link-para">
                 Don’t have an account?{" "}
-                <Link className="signup-link" to="/signup">Signup</Link>
+                <Link className="signup-link" to="/">Signup</Link>
                 </p>
             </form>
         </div>
