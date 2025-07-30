@@ -6,6 +6,7 @@ return(
     <div className="pro-main-cont">
         <div className="pro-first-cont">
             <h1 className="pro-heading">Employ profile</h1>
+            {/* <img className="emp-img" src="/assets/emp-profile.jpg" alt="" /> */}
         </div>
         <div className="pro-second-cont">
             <div className="profile-img-cont">
