@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.su-main {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f8fb;
+}
+
+.su-left {
+  max-width: 600px;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f8fb;
+  /* max-width: 521px;
+  height: 100vh; */
+  /* background-color: #004ab3; */
+}
+.signup-gif{
+   width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.su-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: #fff;
+}
+
+.su-wrap {
+  width: 100%;
+  max-width: 500px;
+}
+
+.su-title {
+  font-size: 32px;
+  color: #000;
+  margin-bottom: 30px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.su-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.su-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.su-label {
+  font-size: 15px;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.su-input {
+  height: 44px;
+  padding: 0 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  color: #333;
+}
+
+.su-phone {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.su-code {
+  width: 65px;
+  height: 44px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 14px;
+  padding: 0 10px;
+}
+
+.su-phone-field {
+  flex: 1;
+}
+
+.su-btn {
+  background-color: #004ab3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.su-btn:hover {
+  background-color: #00358f;
+}
+
+.su-login-text {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.su-login-link {
+  color: #004ab3;
+  margin-left: 5px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.su-login-link:hover {
+  text-decoration: underline;
+}
+
+.inner-su-box {
+  display: flex;
+  flex-wrap: wrap; 
+  align-items: center;
+  gap: 20px;
+  margin-left: 20px;
+}
+
+.inner-su-label {
+  display: flex; 
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #2e2e2e;
+}
+
+.su-label-radio{
+   width: 16px;
+    height: 16px;
+}
+.hob-su-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 20px;
+  gap: 20px;
+}
+.inner-hob-lab{
+font-size: 14px;
+  color: #2e2e2e;
+  font-weight: 400;
+  gap: 20px;
+  align-self: center;
+}
+
+.hob-su-box {
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.inner-hob-lab {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.hob-input-head{
+  width: 16px;
+  height: 16px;
+  accent-color: #004ab3;
+  cursor: pointer;
+}
+.su-input {
+  appearance: none;
+  background-color: #fff;
+  padding-right: 30px;
+  cursor: pointer;
+}
+.com-inner-su-label {
+  height: 82px;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #8b8b8b;
+  border-radius: 4px;
+  resize: none; 
+  font-family: "Poppins", sans-serif;
+  color: #333;
+}
+.msg-para{
+  font-size: 12px;
+  color: red;
+  font-weight: 400;
+}
+
+ 
+
+@media (max-width: 1440px) {
+  .su-left {
+    max-width: 520px;
+  }
+
+  .signup-gif {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .su-right {
+    padding: 60px;
+  }
+
+  .su-wrap {
+    max-width: 550px;
+  }
+}
+
+
+@media(max-width: 1024px) {
+  .su-left {
+    max-width: 400px;
+  }
+
+  .signup-gif {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .su-wrap {
+    max-width: 480px;
+  }
+
+  .su-right {
+    padding: 40px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .su-left {
+    max-width: 320px;
+  }
+
+  .signup-gif {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .su-right {
+    padding: 30px;
+  }
+
+  .su-wrap {
+    max-width: 440px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .su-main {
+    flex-direction: row; 
+  }
+
+  .su-left {
+   display: none;
+  }
+
+  .signup-gif {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  .su-right {
+    padding: 20px;
+  }
+
+  .su-title {
+    font-size: 24px;
+  }
+
+  .su-input,
+  .su-btn {
+    font-size: 14px;
+    height: 40px;
+  }
+
+  .com-inner-su-label {
+    height: 70px;
+  }
+
+  .msg-para {
+    font-size: 12px;
+  }
+}
