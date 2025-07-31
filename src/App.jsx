@@ -6,14 +6,14 @@ import Profile from './Pages/Profile/Profile';
 function App() {
   return (
     <>
-    <Router>
+    {/* <Router>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
-    </Router>
-    {/* <Profile/> */}
+    </Router> */}
+    <Profile/>
     </>
   );
 }
