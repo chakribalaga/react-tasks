@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Profile.css";
+import { useNavigate } from "react-router-dom";
+import Mycontext from "../../../Mycontext";
 
 function Profile(){
+    const navigate = useNavigate();
+    const sharedvalue = useContext(Mycontext)
+
+    const handleLogout =(e)=>{
+        e.preventDefault();
+        sharedvalue.handleUserLogout();
+        alert('Successfully logged out!!!');
+        navigate('/');
+    }
 return(
     <div className="pro-main-cont">
         <div className="pro-first-cont">
@@ -14,20 +25,20 @@ return(
             </div>
             <div className="inf-cont">
                 <h1 className="emp-name-heading">
-                    Balaga Chakradhar Rao
+                    {sharedvalue.username}
                  </h1>
                  <h2 className="emp-email-head">
                     Email :   <span>
-                          Chakribalaga56@gmail.com
+                          {sharedvalue.email}
                     </span>
                  </h2>
                  <h2 className="emp-email-head">
                     Phone :      
                     <span>
-                          1234567980
+                          {sharedvalue.phone}
                     </span>
                  </h2>
-                 <button className="pro-logout-btn">Logout</button>
+                 <button className="pro-logout-btn" onClick={(e)=>handleLogout(e)}>Logout</button>
             </div>
         </div>
     </div>

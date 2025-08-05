@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Signup.css";
 import countryData from "../../data/countries.json";
+import { API_URL } from "../../data/docs";
 
 function Signup() {
   const [step, setStep] = useState(1);
@@ -21,6 +22,24 @@ function Signup() {
     comment: "",
     countryCode: "+91",
   });
+
+  function handleClearData(){
+    setFormData({
+      username: "",
+      email: "",
+      phone: "",
+      password: "",
+      confirmPassword: "",
+      gender: "",
+      hobbies: [],
+      country: "",
+      state: "",
+      comment: "",
+      countryCode: "+91",
+    })
+  }
+
+
 
   useEffect(() => {
     if (formData.country && countryData[formData.country]) {
@@ -64,15 +83,46 @@ function Signup() {
     setStep(1);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const errors = validateStep2();
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
     } else {
       setFormErrors({});
-      console.log("Final form data:", formData);
-      alert("Form submitted successfully!");
+      try{
+      const response = await fetch(`${API_URL}/users/createUser`,{
+        method:'POST',
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(formData)
+      });
+      const resData = await response.json();
+      if(resData.success){
+        alert(resData.message);
+        setFormData({
+          username: "",
+          email: "",
+          phone: "",
+          password: "",
+          confirmPassword: "",
+          gender: "",
+          hobbies: [],
+          country: "",
+          state: "",
+          comment: "",
+          countryCode: "+91",
+        })
+      }else{
+        alert(resData.message);
+      }
+    }catch(err){
+      console.log(err.message);
+      alert(err.message);
+    }
+      // console.log("Final form data:", formData);
+      // alert("Form submitted successfully!");
     }
   };
 
@@ -323,6 +373,9 @@ function Signup() {
                 </button>
               </>
             )}
+            <p className="su-reset" onClick={handleClearData}>
+                Reset
+              </p>
 
             <button className="su-btn" type="submit">
               {step === 1 ? "Next" : "Submit"}

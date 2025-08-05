@@ -208,6 +208,19 @@ font-size: 14px;
   color: red;
   font-weight: 400;
 }
+.su-reset {
+  font-size: 15px;
+  color: #004ab3;
+  cursor: pointer;
+  text-align: left;
+  margin-top: 10px;
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+
+.su-reset:hover {
+  color: #00358f;
+}
 
  
 
