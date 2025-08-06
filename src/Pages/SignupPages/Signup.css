@@ -221,6 +221,37 @@ font-size: 14px;
 .su-reset:hover {
   color: #00358f;
 }
+.capt-code {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.capt-text {
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 2px;
+  background-color: #dedede;
+  padding: 6px 12px;
+  border-radius: 4px;
+  user-select: none;
+  margin: 20px 0px;
+  color: #221fca;
+}
+
+.capt-refresh {
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  background-color: #dedede;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.capt-refresh:hover {
+  background-color: #c0c0c0;
+}
 
  
 

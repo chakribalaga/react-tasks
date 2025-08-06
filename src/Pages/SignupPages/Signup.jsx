@@ -8,7 +8,7 @@ function Signup() {
   const [step, setStep] = useState(1);
   const [states, setStates] = useState([]);
   const [formErrors, setFormErrors] = useState({});
-  
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -21,9 +21,11 @@ function Signup() {
     state: "",
     comment: "",
     countryCode: "+91",
+    captchaCode: "",
+    captchaInput: "",
   });
 
-  function handleClearData(){
+  function handleClearData() {
     setFormData({
       username: "",
       email: "",
@@ -36,10 +38,11 @@ function Signup() {
       state: "",
       comment: "",
       countryCode: "+91",
-    })
+      captchaCode: "",
+      captchaInput: "",
+    });
+    generateCaptcha(); // Refresh on reset
   }
-
-
 
   useEffect(() => {
     if (formData.country && countryData[formData.country]) {
@@ -47,6 +50,19 @@ function Signup() {
       setFormData((prev) => ({ ...prev, state: "" }));
     }
   }, [formData.country]);
+
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
+
+  const generateCaptcha = () => {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let code = "";
+    for (let i = 0; i < 5; i++) {
+      code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    setFormData((prev) => ({ ...prev, captchaCode: code }));
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -83,46 +99,32 @@ function Signup() {
     setStep(1);
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = validateStep2();
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
     } else {
       setFormErrors({});
-      try{
-      const response = await fetch(`${API_URL}/users/createUser`,{
-        method:'POST',
-        headers:{
-          "Content-Type":"application/json"
-        },
-        body:JSON.stringify(formData)
-      });
-      const resData = await response.json();
-      if(resData.success){
-        alert(resData.message);
-        setFormData({
-          username: "",
-          email: "",
-          phone: "",
-          password: "",
-          confirmPassword: "",
-          gender: "",
-          hobbies: [],
-          country: "",
-          state: "",
-          comment: "",
-          countryCode: "+91",
-        })
-      }else{
-        alert(resData.message);
+      try {
+        const response = await fetch(`${API_URL}/users/createUser`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+        const resData = await response.json();
+        if (resData.success) {
+          alert(resData.message);
+          handleClearData();
+        } else {
+          alert(resData.message);
+        }
+      } catch (err) {
+        console.log(err.message);
+        alert(err.message);
       }
-    }catch(err){
-      console.log(err.message);
-      alert(err.message);
-    }
-      // console.log("Final form data:", formData);
-      // alert("Form submitted successfully!");
     }
   };
 
@@ -182,6 +184,10 @@ function Signup() {
 
     if (!formData.state) {
       errors.state = "State is required";
+    }
+
+    if (formData.captchaInput.trim() !== formData.captchaCode.trim()) {
+      errors.captcha = "CAPTCHA does not match";
     }
 
     return errors;
@@ -275,7 +281,9 @@ function Signup() {
                     onChange={handleChange}
                     placeholder="Confirm password"
                   />
-                  {formErrors.confirmPassword && <p className="msg-para">{formErrors.confirmPassword}</p>}
+                  {formErrors.confirmPassword && (
+                    <p className="msg-para">{formErrors.confirmPassword}</p>
+                  )}
                 </div>
               </>
             )}
@@ -330,7 +338,9 @@ function Signup() {
                   >
                     <option value="">Select your country</option>
                     {Object.keys(countryData).map((country) => (
-                      <option key={country} value={country}>{country}</option>
+                      <option key={country} value={country}>
+                        {country}
+                      </option>
                     ))}
                   </select>
                   {formErrors.country && <p className="msg-para">{formErrors.country}</p>}
@@ -347,7 +357,9 @@ function Signup() {
                   >
                     <option value="">Select your state</option>
                     {states.map((state) => (
-                      <option key={state} value={state}>{state}</option>
+                      <option key={state} value={state}>
+                        {state}
+                      </option>
                     ))}
                   </select>
                   {formErrors.state && <p className="msg-para">{formErrors.state}</p>}
@@ -364,18 +376,34 @@ function Signup() {
                   ></textarea>
                 </div>
 
-                <button
-                  type="button"
-                  className="su-btn back-btn"
-                  onClick={handleBack}
-                >
+                <div className="su-box">
+                  <label className="su-label">CAPTCHA</label>
+                  <div className="capt-code">
+                    <div className="capt-text">{formData.captchaCode}</div>
+                    <button type="button" className="capt-refresh" onClick={generateCaptcha}>
+                      Refresh
+                    </button>
+                  </div>
+                  <input
+                    className="su-input"
+                    type="text"
+                    name="captchaInput"
+                    value={formData.captchaInput}
+                    onChange={handleChange}
+                    placeholder="Enter the above code"
+                  />
+                  {formErrors.captcha && <p className="msg-para">{formErrors.captcha}</p>}
+                </div>
+
+                <button type="button" className="su-btn back-btn" onClick={handleBack}>
                   Back
                 </button>
               </>
             )}
+
             <p className="su-reset" onClick={handleClearData}>
-                Reset
-              </p>
+              Reset
+            </p>
 
             <button className="su-btn" type="submit">
               {step === 1 ? "Next" : "Submit"}
@@ -392,4 +420,3 @@ function Signup() {
 }
 
 export default Signup;
-
