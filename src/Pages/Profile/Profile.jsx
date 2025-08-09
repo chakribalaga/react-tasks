@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
 import Mycontext from "../../../Mycontext";
-
+import Navbar from "../../components/navbar/Navbar";
 function Profile(){
     const navigate = useNavigate();
     const sharedvalue = useContext(Mycontext)
@@ -15,6 +15,7 @@ function Profile(){
     }
 return(
     <div className="pro-main-cont">
+        <Navbar/>
         <div className="pro-first-cont">
             <h1 className="pro-heading">Employee profile</h1>
             {/* <img className="emp-img" src="/assets/emp-profile.jpg" alt="" /> */}

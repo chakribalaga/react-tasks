@@ -36,13 +36,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* ✅ Center children horizontally */
+  align-items: center;
   margin-top: 100px;
   background-color: transparent;
 }
 
 .profile-img-cont {
-  /* ✅ Removed margin-left */
+  
   width: 100px;
   height: 100px;
   background-color: #bfbeff;
